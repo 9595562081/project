@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  height:30vh;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333; 
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: red;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: red;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
+.image {
+  float: left;
+  width: 30%;
+  height: 70vh;
+  background: #ccc;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow:auto;
+}
+
+div img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 600px;
+  height: 600px;
+}
+.main{
+float: right;
+padding: 20px;
+width: 64.5%;
+
+height:70vh;
+overflow-y: auto;
+}
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+</style>
+</head>
+<body>
+
+<div class="navbar" align="center">
+  <a href="#home">Home</a>
+  <div class="subnav">
+    <button class="subnavbtn">About <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="company.html">Company and Branches</a>
+      <a href="organised.html">Events Organised</a>
+      <a href="list.html">Prices and events</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Services <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="Events.html">Events DJ</a>
+      <a href="Band.html">Band and DJ Sound Services</a>
+      <a href="Night.html">Night Party</a>
+      <a href="Music.html">Singers and DJ</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Admin <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="CheckOrders.html">Check Orders</a>
+      <a href="AddEvents.html">Add Events</a>
+      <a href="Branches.html">Add Branches</a>
+      <a href="AddPrices.html">Add Prices</a>
+    </div>
+  </div>
+  <div class="contact">
+  <a href="contact.html">Contact</a>
+  </div>
+</div>
+<section>
+<div class="image">
+<img src="https://t4.ftcdn.net/jpg/05/65/32/47/360_F_565324708_RYdtKOxeVUJKBuJDeqBqJ5hxxg8xXUvY.jpg"/></div>
+<div class="main" id="main"></div>
+</section>
+<footer>
+<pre>
+Address: Elu's Rd, Essel gardens, Bengaluru, Karnataka 560077
+Areas served: Maldive Islands and nearby areas
+Phone: 097038 60980
+</pre>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var serviceLinks = document.querySelectorAll('.subnav-content a');
+  serviceLinks.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default action of the anchor tag
+      var pageName = link.getAttribute('href');
+      fetch(pageName)
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('main').innerHTML = html;
+        })
+        .catch(error => console.error('Error loading page:', error));
+    });
+  });
+});
+var service = document.querySelectorAll('.contact a');
+service.forEach(function(link) {
+  link.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default action of the anchor tag
+    var pageName = link.getAttribute('href');
+    fetch(pageName)
+      .then(response => response.text())
+      .then(html => {
+          document.getElementById('main').innerHTML = html;
+      })
+      .catch(error => console.error('Error loading page:', error));
+  });
+});
+</script>
+</body>
+</html>

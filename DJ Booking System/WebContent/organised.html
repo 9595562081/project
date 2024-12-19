@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On Load Form Action</title>
+<script>
+    // Function to be executed on page load
+    function onLoadAction() {
+        // Code to perform on page load
+
+        // You can perform any action here, such as submitting the form automatically
+        document.getElementById("myForm").submit();
+    }
+</script>
+</head>
+<body onload="onLoadAction()">
+    <form id="myForm" action="./Controller/oEvents">
+    <input type="submit" value="submit"/>
+ 
+  
+    </form>
+</body>
+</html>
